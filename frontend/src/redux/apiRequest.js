@@ -1,19 +1,27 @@
 import axios from 'axios';
 import {
-    loginFailed, loginStart, loginSuccess,
-    registerStart, registerFailed, registerSuccess
+    loginFailed,
+    loginStart,
+    loginSuccess,
+    registerStart,
+    registerFailed,
+    registerSuccess
 }
-    from './authSlice';
+from './authSlice';
 import { delItemFailed, delItemStart, delItemSuccess, getCartFailed, getCartStart, getCartSuccess, paymentFailed, paymentStart, paymentSuccessfully } from './cartSlice';
 import {
-    addToCartFailed, addToCartStart, addToCartSuccessfully,
-    getProductFailed, getProductStart, getProductSuccessfully
+    addToCartFailed,
+    addToCartStart,
+    addToCartSuccessfully,
+    getProductFailed,
+    getProductStart,
+    getProductSuccessfully
 } from './productSlice';
 
-export const loginUser = async (user, dispatch, navigate) => {
+export const loginUser = async(user, dispatch, navigate) => {
     dispatch(loginStart())
     try {
-        const res = await axios.post("http://localhost:8081/v1/login", user)
+        const res = await axios.post("http://13.250.46.116:8081/v1/login", user)
         dispatch(loginSuccess(res.data))
         navigate("/")
     } catch (err) {
@@ -21,10 +29,10 @@ export const loginUser = async (user, dispatch, navigate) => {
     }
 }
 
-export const registerUser = async (user, dispatch, navigate) => {
+export const registerUser = async(user, dispatch, navigate) => {
     dispatch(registerStart())
     try {
-        await axios.post("http://localhost:8081/v1/register", user)
+        await axios.post("http://13.250.46.116:8081/v1/register", user)
         dispatch(registerSuccess())
         navigate("/login")
     } catch (err) {
@@ -32,20 +40,20 @@ export const registerUser = async (user, dispatch, navigate) => {
     }
 }
 
-export const getProduct = async (dispatch) => {
+export const getProduct = async(dispatch) => {
     dispatch(getProductStart())
     try {
-        const res = await axios.get("http://localhost:8081")
+        const res = await axios.get("http://13.250.46.116:8081")
         dispatch(getProductSuccessfully(res.data))
     } catch (err) {
         dispatch(getProductFailed())
     }
 }
 
-export const addToCart = async (accessToken, username, id, dispatch, navigate) => {
+export const addToCart = async(accessToken, username, id, dispatch, navigate) => {
     dispatch(addToCartStart())
     try {
-        const res = await axios.post("http://localhost:8081/user/addtocart/" + id, {}, {
+        const res = await axios.post("http://13.250.46.116:8081/user/addtocart/" + id, {}, {
             headers: {
                 token: 'Bearer ' + accessToken,
                 username: username,
@@ -59,10 +67,10 @@ export const addToCart = async (accessToken, username, id, dispatch, navigate) =
     }
 }
 
-export const getCart = async (accessToken, username, dispatch) => {
+export const getCart = async(accessToken, username, dispatch) => {
     dispatch(getCartStart())
     try {
-        const res = await axios.get("http://localhost:8081/user/cart", {
+        const res = await axios.get("http://13.250.46.116:8081/user/cart", {
             headers: {
                 token: `Bearer ` + accessToken,
                 username: username
@@ -74,10 +82,10 @@ export const getCart = async (accessToken, username, dispatch) => {
     }
 }
 
-export const delItem = async (accessToken, id, dispatch, username) => {
+export const delItem = async(accessToken, id, dispatch, username) => {
     dispatch(delItemStart())
     try {
-        await axios.delete('http://localhost:8081/user/remove/' + id, {
+        await axios.delete('http://13.250.46.116:8081/user/remove/' + id, {
             headers: {
                 token: 'Bearer ' + accessToken,
                 username: username
@@ -88,10 +96,10 @@ export const delItem = async (accessToken, id, dispatch, username) => {
         dispatch(delItemFailed('Failed'))
     }
 }
-export const payment = async (accessToken, body, dispatch, navigate) => {
+export const payment = async(accessToken, body, dispatch, navigate) => {
     dispatch(paymentStart())
     try {
-        const res = await axios.post("http://localhost:8081/user/payment", body, {
+        const res = await axios.post("http://13.250.46.116:8081/user/payment", body, {
             headers: {
                 token: "Bearer " + accessToken
             }

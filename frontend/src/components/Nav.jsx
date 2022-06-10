@@ -27,7 +27,7 @@ function Nav(props) {
         getOrders(user?.accessToken, dispatch)
     }
     useEffect(() => {
-        axios.get("http://localhost:8081/user/cart", {
+        axios.get("http://13.250.46.116:8081/user/cart", {
             headers: {
                 token: `Bearer ` + user?.accessToken,
                 username: user?.username
@@ -35,7 +35,7 @@ function Nav(props) {
         }).then((res) => setData(res.data))
     }, [user])
     useEffect(() => {
-        axios.get("http://localhost:8081/user/cart", {
+        axios.get("http://13.250.46.116:8081/user/cart", {
             headers: {
                 token: `Bearer ` + user?.accessToken,
                 username: user?.username
@@ -43,7 +43,7 @@ function Nav(props) {
         }).then((res) => setData(res.data))
     }, [data])
     useEffect(() => {
-        axios.get("http://localhost:8081/user/cart", {
+        axios.get("http://13.250.46.116:8081/user/cart", {
             headers: {
                 token: `Bearer ` + user?.accessToken,
                 username: user?.username

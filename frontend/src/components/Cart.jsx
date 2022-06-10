@@ -10,7 +10,7 @@ function Cart(props) {
     const [user, setUser] = useState(useSelector((state) => state.auth.login?.currentUser))
     const [data, setData] = useState(null)
     useEffect(() => {
-        axios.get("http://localhost:8081/user/cart", {
+        axios.get("http://13.250.46.116:8081/user/cart", {
             headers: {
                 token: `Bearer ` + user?.accessToken,
                 username: user?.username

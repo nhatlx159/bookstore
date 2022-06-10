@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { addProductFailed, addProductStart, addProductSuccess, deleteProductFailed, deleteProductStart, deleteProductSuccess, deleteUserFailed, deleteUserStart, deleteUserSuccess, getOrdersFailed, getOrdersStart, getOrdersSuccess, getUserFailed, getUserStart, getUserSuccess, updateOrderFailed, updateOrderStart, updateOrderSuccess, updateProductFailed, updateProductStart, updateProductSuccess } from './adminSlice';
 
-export const addProduct = async (accessToken, body, dispatch, navigate) => {
+export const addProduct = async(accessToken, body, dispatch, navigate) => {
     dispatch(addProductStart());
     try {
-        const res = await axios.post("http://localhost:8081/admin/addproduct", body, {
+        const res = await axios.post("http://13.250.46.116:8081/admin/addproduct", body, {
             headers: {
                 token: "Bearer " + accessToken
             }
@@ -18,10 +18,10 @@ export const addProduct = async (accessToken, body, dispatch, navigate) => {
     }
 }
 
-export const deleteProduct = async (accessToken, item, dispatch) => {
+export const deleteProduct = async(accessToken, item, dispatch) => {
     dispatch(deleteProductStart());
     try {
-        await axios.delete("http://localhost:8081/admin/deleteproduct/" + item._id, {
+        await axios.delete("http://13.250.46.116:8081/admin/deleteproduct/" + item._id, {
             headers: {
                 token: "Bearer " + accessToken
             }
@@ -34,10 +34,10 @@ export const deleteProduct = async (accessToken, item, dispatch) => {
     }
 }
 
-export const updateProduct = async (accessToken, id, dispatch, body) => {
+export const updateProduct = async(accessToken, id, dispatch, body) => {
     dispatch(updateProductStart());
     try {
-        const res = await axios.patch("http://localhost:8081/admin/update/" + id, body, {
+        const res = await axios.patch("http://13.250.46.116:8081/admin/update/" + id, body, {
             headers: {
                 token: "Bearer " + accessToken
             }
@@ -50,10 +50,10 @@ export const updateProduct = async (accessToken, id, dispatch, body) => {
     }
 }
 
-export const getUser = async (accessToken, dispatch) => {
+export const getUser = async(accessToken, dispatch) => {
     dispatch(getUserStart());
     try {
-        const res = await axios.get("http://localhost:8081/admin/getuser", {
+        const res = await axios.get("http://13.250.46.116:8081/admin/getuser", {
             headers: {
                 token: "Bearer " + accessToken
             }
@@ -65,10 +65,10 @@ export const getUser = async (accessToken, dispatch) => {
     }
 }
 
-export const deleteUser = async (accessToken, dispatch, user) => {
+export const deleteUser = async(accessToken, dispatch, user) => {
     dispatch(deleteUserStart());
     try {
-        await axios.delete("http://localhost:8081/admin/delete/" + user._id, {
+        await axios.delete("http://13.250.46.116:8081/admin/delete/" + user._id, {
             headers: {
                 token: "Bearer " + accessToken
             }
@@ -81,10 +81,10 @@ export const deleteUser = async (accessToken, dispatch, user) => {
     }
 }
 
-export const getOrders = async (accessToken, dispatch) => {
+export const getOrders = async(accessToken, dispatch) => {
     dispatch(getOrdersStart());
     try {
-        const res = await axios.get("http://localhost:8081/admin/getorders", {
+        const res = await axios.get("http://13.250.46.116:8081/admin/getorders", {
             headers: {
                 token: "Bearer " + accessToken
             }
@@ -96,10 +96,10 @@ export const getOrders = async (accessToken, dispatch) => {
     }
 }
 
-export const updateOrder = async (accessToken, dispatch, id, body, navigate) => {
+export const updateOrder = async(accessToken, dispatch, id, body, navigate) => {
     dispatch(updateOrderStart());
     try {
-        await axios.patch("http://localhost:8081/admin/setorders/" + id, body, {
+        await axios.patch("http://13.250.46.116:8081/admin/setorders/" + id, body, {
             headers: {
                 token: "Bearer " + accessToken
             }

@@ -7,7 +7,7 @@ function OrderDetails(props) {
     const [user, setUser] = useState(useSelector((state) => state.auth.login?.currentUser));
     const [orders, setOrders] = useState(null)
     useEffect(() => {
-        axios.get("http://localhost:8081/user/getorders/" + user?._id, {
+        axios.get("http://13.250.46.116:8081/user/getorders/" + user?._id, {
             headers: {
                 token: "Bearer " + user?.accessToken
             }

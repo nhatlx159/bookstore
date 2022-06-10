@@ -9,7 +9,7 @@ function Home(props) {
     window.scrollTo(0, 0);
     const [data, setData] = useState(null)
     useEffect(() => {
-        fetch("http://localhost:8081").then((res) => res.json())
+        fetch("http://13.250.46.116:8081").then((res) => res.json())
             .then((json) => setData(json))
     }, [])
     const display = () => {
